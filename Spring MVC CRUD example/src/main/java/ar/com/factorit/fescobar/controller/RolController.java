@@ -26,7 +26,7 @@ public class RolController {
 	}
 	
 	@RequestMapping(value = "/roles/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Rol> findOne(Integer id) {
+	public ResponseEntity<Rol> findOne(@PathVariable("id") Integer id) {
 		Rol rol = rolService.findOne(id);
 		return ResponseEntity.ok().body(rol);
 	}
@@ -38,13 +38,13 @@ public class RolController {
 	}
 
 	@RequestMapping(value = "/roles/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody Rol rol) {
+	public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Rol rol) {
 		rolService.update(rol);
 		return ResponseEntity.ok().body("Rol actualizado");
 	}
 
 	@RequestMapping(value = "/roles/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<?> delete(@PathVariable Integer id) {
+	public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
 		rolService.delete(id);
 		return ResponseEntity.ok().body("Rol eliminado");
 	}

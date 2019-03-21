@@ -30,7 +30,7 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping(value = "/usuarios/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Usuario> findOne(Integer id) {
+	public ResponseEntity<Usuario> findOne(@PathVariable("id") Integer id) {
 		Usuario usuario = usuarioService.findOne(id);
 		return ResponseEntity.ok().body(usuario);
 	}
@@ -42,13 +42,13 @@ public class UsuarioController {
 	}
 
 	@RequestMapping(value = "/usuarios/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody Usuario usuario) {
+	public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Usuario usuario) {
 		usuarioService.update(usuario);
 		return ResponseEntity.ok().body("Usuario actualizado");
 	}
 	
 	@RequestMapping(value = "/usuarios/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<?> delete(@PathVariable Integer id) {
+	public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
 		usuarioService.delete(id);
 		return ResponseEntity.ok().body("Usuario eliminado");
 	}
