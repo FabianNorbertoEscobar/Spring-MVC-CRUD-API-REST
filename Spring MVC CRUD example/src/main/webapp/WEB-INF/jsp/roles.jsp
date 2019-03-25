@@ -14,7 +14,9 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/mis estilos.css">
+
+<script src="../js/roles.js"></script>
 
 </head>
 <body>
@@ -29,56 +31,25 @@
 						<div class="panel-title">Listado de Roles</div>
 					</div>
 					<div class="panel-body">
-						<c:if test="${!empty roles }">
-							<div class="table-responsive">
-								<table class="table table-bordered table-striped table-hover">
-									<thead>
-										<tr class="active success">
-											<th>Nombre</th>
-											<th>Descripción</th>
-											<th>Fecha de Creación</th>
-											<th>Estado</th>
-											<th>Editar</th>
-											<th>Eliminar</th>
-										</tr>
-									</thead>
-									<tbody>
-
-										<c:forEach items="${roles}" var="rol">
-
-											<c:url var="editar" value="/roles/editar">
-												<c:param name="id" value="${rol.id }"></c:param>
-											</c:url>
-											<c:url var="eliminar" value="/roles/eliminar">
-												<c:param name="id" value="${rol.id }"></c:param>
-											</c:url>
-
-											<tr>
-												<td>${rol.nombre}</td>
-												<td>${rol.descripcion}</td>
-												<td>${rol.fechaCreacion}</td>
-												<c:choose>
-													<c:when test="${rol.estado == true }">
-														<td>Activo</td>
-													</c:when>
-													<c:otherwise>
-														<td>Inactivo</td>
-													</c:otherwise>
-												</c:choose>
-												<td><a href="${editar }"
-													class="btn btn-info center-block"><i
-														class="glyphicon glyphicon-edit"></i>Editar</a></td>
-												<td><a href="${eliminar }"
-													class="btn btn-danger center-block"><i
-														class="glyphicon glyphicon-trash"></i>Eliminar</a></td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</div>
-						</c:if>
-						<br /> <br /> <a href="agregar" class="btn btn-success"><i
-							class="glyphicon glyphicon-check"></i> Agregar nuevo rol</a>
+						<div class="table-responsive">
+							<table class="table table-bordered table-striped table-hover">
+								<thead>
+									<tr class="active success">
+										<th>Nombre</th>
+										<th>Descripción</th>
+										<th>Fecha de Creación</th>
+										<th>Estado</th>
+										<th>Editar</th>
+										<th>Eliminar</th>
+									</tr>
+								</thead>
+								<tbody id="tbodyContent">
+								</tbody>
+							</table>
+						</div>
+						<br /> <br /> <a href="/roles/save" id="btnAgregar"
+							class="btn btn-success"><i class="glyphicon glyphicon-check"></i>
+							Agregar nuevo rol</a>
 					</div>
 				</div>
 			</div>

@@ -15,7 +15,9 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/mis estilos.css">
+
+<script src="../js/rolFormulario.js"></script>
 
 </head>
 <body>
@@ -38,8 +40,7 @@
 					</div>
 
 					<div class="panel-body">
-						<form:form method="post" action="/roles/guardar"
-							modelAttribute="rol">
+						<form:form method="post" action="/roles/save" modelAttribute="rol">
 							<form:hidden path="id" />
 							<div class="form-group">
 								<form:label path="nombre" class="col-md-3">Nombre:</form:label>
@@ -83,10 +84,12 @@
 							<br />
 							<c:choose>
 								<c:when test="${param.id != null}">
-									<form:button class="btn btn-success center-block">Editar</form:button>
+									<form:button id="btnEditar"
+										class="btn btn-success center-block">Editar</form:button>
 								</c:when>
 								<c:otherwise>
-									<form:button class="btn btn-success center-block">Agregar</form:button>
+									<form:button id="btnAgregar"
+										class="btn btn-success center-block">Agregar</form:button>
 								</c:otherwise>
 							</c:choose>
 						</form:form>
@@ -96,5 +99,10 @@
 			</div>
 		</div>
 	</div>
+	<c:if test="${param.id != null }">
+		<script>
+			loadForm(param.id);
+		</script>
+	</c:if>
 </body>
 </html>

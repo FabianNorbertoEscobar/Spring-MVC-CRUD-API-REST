@@ -14,7 +14,9 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/mis estilos.css">
+
+<script src="../js/usuarios.js"></script>
 
 </head>
 <body>
@@ -29,51 +31,25 @@
 						<div class="panel-title">Listado de Usuarios</div>
 					</div>
 					<div class="panel-body">
-						<c:if test="${!empty usuarios }">
-							<div class="table-responsive">
-								<table class="table table-bordered table-striped table-hover">
-									<thead>
-										<tr class="active success">
-											<th>Nombre</th>
-											<th>Apellido</th>
-											<th>Email</th>
-											<th>Password</th>
-											<th>Rol</th>
-											<th>Editar</th>
-											<th>Eliminar</th>
-										</tr>
-									</thead>
-									<tbody>
-
-										<c:forEach items="${usuarios}" var="usuario">
-
-											<c:url var="editar" value="/usuarios/editar">
-												<c:param name="id" value="${usuario.id }"></c:param>
-											</c:url>
-											<c:url var="eliminar" value="/usuarios/eliminar">
-												<c:param name="id" value="${usuario.id }"></c:param>
-											</c:url>
-
-											<tr>
-												<td>${usuario.nombre}</td>
-												<td>${usuario.apellido}</td>
-												<td>${usuario.email}</td>
-												<td>${usuario.password}</td>
-												<td>${usuario.roles }</td>
-												<td><a href="${editar }"
-													class="btn btn-info center-block"><i
-														class="glyphicon glyphicon-edit"></i>Editar</a></td>
-												<td><a href="${eliminar }"
-													class="btn btn-danger center-block"><i
-														class="glyphicon glyphicon-trash"></i>Eliminar</a></td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</div>
-						</c:if>
-						<br /> <br /> <a href="agregar" class="btn btn-success"><i
-							class="glyphicon glyphicon-check"></i> Agregar nuevo usuario</a>
+						<div class="table-responsive">
+							<table class="table table-bordered table-striped table-hover">
+								<thead>
+									<tr class="active success">
+										<th>Nombre</th>
+										<th>Apellido</th>
+										<th>Email</th>
+										<th>Rol</th>
+										<th>Editar</th>
+										<th>Eliminar</th>
+									</tr>
+								</thead>
+								<tbody id="tbodyContent">
+								</tbody>
+							</table>
+						</div>
+						<br /> <br /> <a href="/usuarios/save" id="btnAgregar"
+							class="btn btn-success"><i class="glyphicon glyphicon-check"></i>
+							Agregar nuevo usuario</a>
 					</div>
 				</div>
 			</div>

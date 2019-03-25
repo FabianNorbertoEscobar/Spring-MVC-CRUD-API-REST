@@ -15,7 +15,9 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/mis estilos.css">
+
+<script src="../js/usuarioFormulario.js"></script>
 
 </head>
 <body>
@@ -38,7 +40,7 @@
 					</div>
 
 					<div class="panel-body">
-						<form:form method="post" action="/usuarios/guardar"
+						<form:form method="post" action="/usuarios/save"
 							modelAttribute="usuario">
 							<form:hidden path="id" />
 							<div class="form-group">
@@ -81,28 +83,30 @@
 							<br />
 							<div class="form-group">
 								<form:label path="roles" class="col-md-3">Rol:</form:label>
-								<form:select multiple="true" path="roles" class="form-control">
-									<c:forEach items="${listaRoles}" var="rol">
-										<option value="${rol.id }" class="form-control">${rol.nombre}</option>
-									</c:forEach>
-								</form:select>
+								<div class="col-md-9" id="listaRoles"></div>
 							</div>
 							<br />
 							<br />
 							<c:choose>
 								<c:when test="${param.id != null}">
-									<form:button class="btn btn-success center-block">Editar</form:button>
+									<form:button id="btnEditar"
+										class="btn btn-success center-block">Editar</form:button>
 								</c:when>
 								<c:otherwise>
-									<form:button class="btn btn-success center-block">Agregar</form:button>
+									<form:button id="btnAgregar"
+										class="btn btn-success center-block">Agregar</form:button>
 								</c:otherwise>
 							</c:choose>
 						</form:form>
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<c:if test="${param.id != null }">
+		<script>
+			loadForm(param.id);
+		</script>
+	</c:if>
 </body>
 </html>
