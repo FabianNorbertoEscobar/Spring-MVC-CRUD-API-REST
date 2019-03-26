@@ -14,13 +14,14 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "Rol")
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Rol {
 
 	@Id
@@ -35,13 +36,14 @@ public class Rol {
 
 	@Column(name = "fechaCreacion")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@JsonFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date fechaCreacion;
 
 	@Column(name = "estado")
 	private boolean estado;
 
 	@ManyToMany(mappedBy = "roles")
+	@JsonBackReference
 	private Set<Usuario> usuarios = new HashSet<Usuario>();
 
 	public Rol(Integer id, String nombre, String descripcion, Date fechaCreacion, boolean estado,

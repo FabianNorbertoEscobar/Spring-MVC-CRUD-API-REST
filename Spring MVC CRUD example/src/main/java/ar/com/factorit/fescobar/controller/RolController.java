@@ -18,18 +18,22 @@ public class RolController {
 
 	@RequestMapping(value = "/roles/save", method = RequestMethod.GET)
 	public String save(Model model) {
-		model.addAttribute("rol", new Rol());
+		Rol rol = new Rol();
+		rol.setId(-1);
+		model.addAttribute("rol", rol);
 		return "rolFormulario";
 	}
 
 	@RequestMapping(value = "/roles/update/{id}", method = RequestMethod.GET)
 	public String update(@PathVariable("id") Integer id, Model model) {
-		model.addAttribute("rol", new Rol());
+		Rol rol = new Rol();
+		rol.setId(id);
+		model.addAttribute("rol", rol);
 		return "rolFormulario";
 	}
 
 	@RequestMapping(value = "/roles/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable("id") Integer id) {
-		return "roles";
+		return "redirect:/roles";
 	}
 }

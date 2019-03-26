@@ -16,11 +16,12 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "Usuario")
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Usuario {
 
 	@Id
@@ -36,13 +37,13 @@ public class Usuario {
 	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 
-	@JsonIgnore
 	@Column(name = "password", nullable = false)
 	private String password;
 
 	@ManyToMany(cascade = { CascadeType.ALL })
 	@JoinTable(name = "UsuarioRoles", joinColumns = { @JoinColumn(name = "idUsuario") }, inverseJoinColumns = {
 			@JoinColumn(name = "idRol") })
+	@JsonManagedReference
 	private Set<Rol> roles = new HashSet<Rol>();
 
 	public Usuario(Integer id, String nombre, String apellido, String email, String password, Set<Rol> roles) {

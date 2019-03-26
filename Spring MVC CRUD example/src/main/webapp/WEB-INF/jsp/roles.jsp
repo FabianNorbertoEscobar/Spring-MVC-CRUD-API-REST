@@ -14,9 +14,12 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="../css/mis estilos.css">
+<c:set var="baseURL" value="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}" />
+<script type="text/javascript">
+	var baseURL = '${baseURL}';
+</script>
 
-<script src="../js/roles.js"></script>
+<script src="../../js/roles.js"></script>
 
 </head>
 <body>

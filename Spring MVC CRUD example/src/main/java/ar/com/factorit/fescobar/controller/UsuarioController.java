@@ -18,18 +18,22 @@ public class UsuarioController {
 
 	@RequestMapping(value = "/usuarios/save", method = RequestMethod.GET)
 	public String save(Model model) {
-		model.addAttribute(new Usuario());
+		Usuario usuario = new Usuario();
+		usuario.setId(-1);
+		model.addAttribute(usuario);
 		return "usuarioFormulario";
 	}
 
 	@RequestMapping(value = "/usuarios/update/{id}", method = RequestMethod.GET)
 	public String update(@PathVariable("id") Integer id, Model model) {
-		model.addAttribute("usuario", new Usuario());
+		Usuario usuario = new Usuario();
+		usuario.setId(id);
+		model.addAttribute("usuario", usuario);
 		return "usuarioFormulario";
 	}
 
 	@RequestMapping(value = "/usuarios/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable("id") Integer id) {
-		return "usuarios";
+		return "redirect:/usuarios";
 	}
 }

@@ -4,7 +4,7 @@
 
 <html>
 <head>
-<title>Agregar rol</title>
+<title>Formulario rol</title>
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,9 +15,15 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="../css/mis estilos.css">
+<c:set var="baseURL" value="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}" />
+<script type="text/javascript">
+	var baseURL = '${baseURL}';
+</script>
 
-<script src="../js/rolFormulario.js"></script>
+<script type="text/javascript">
+	var rol_id = ${rol.id};
+</script>
+<script src="../../js/rolFormulario.js"></script>
 
 </head>
 <body>
@@ -25,7 +31,7 @@
 		<div class="row-fluid">
 			<div class="col-md-offset-2 col-md-7">
 				<c:choose>
-					<c:when test="${param.id != null }">
+					<c:when test="${rol.id != -1 }">
 						<h1 class="text-center">Editar rol</h1>
 					</c:when>
 					<c:otherwise>
@@ -83,7 +89,7 @@
 							<br />
 							<br />
 							<c:choose>
-								<c:when test="${param.id != null}">
+								<c:when test="${rol.id != -1 }">
 									<form:button id="btnEditar"
 										class="btn btn-success center-block">Editar</form:button>
 								</c:when>
@@ -99,10 +105,5 @@
 			</div>
 		</div>
 	</div>
-	<c:if test="${param.id != null }">
-		<script>
-			loadForm(param.id);
-		</script>
-	</c:if>
 </body>
 </html>
