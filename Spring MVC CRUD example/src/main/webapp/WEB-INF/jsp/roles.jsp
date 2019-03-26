@@ -19,7 +19,7 @@
 	var baseURL = '${baseURL}';
 </script>
 
-<script src="../../js/roles.js"></script>
+<script src="${baseURL}/js/roles.js"></script>
 
 </head>
 <body>

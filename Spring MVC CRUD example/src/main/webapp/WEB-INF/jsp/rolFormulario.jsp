@@ -23,7 +23,7 @@
 <script type="text/javascript">
 	var rol_id = ${rol.id};
 </script>
-<script src="../../js/rolFormulario.js"></script>
+<script src="${baseURL}/js/rolFormulario.js"></script>
 
 </head>
 <body>
