@@ -1,5 +1,6 @@
 package ar.com.factorit.fescobar.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,7 +22,12 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name = "Usuario")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Usuario {
+public class Usuario implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8273838188338172275L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +48,7 @@ public class Usuario {
 	@ManyToMany(cascade = { CascadeType.ALL })
 	@JoinTable(name = "UsuarioRoles", joinColumns = { @JoinColumn(name = "idUsuario") }, inverseJoinColumns = {
 			@JoinColumn(name = "idRol") })
-	@JsonManagedReference
+//	@JsonManagedReference
 	private Set<Rol> roles = new HashSet<Rol>();
 
 	public Usuario(Integer id, String nombre, String apellido, String email, String password, Set<Rol> roles) {

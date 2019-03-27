@@ -20,7 +20,7 @@ public class UsuarioController {
 	public String save(Model model) {
 		Usuario usuario = new Usuario();
 		usuario.setId(-1);
-		model.addAttribute(usuario);
+		model.addAttribute("usuario", usuario);
 		return "usuarioFormulario";
 	}
 

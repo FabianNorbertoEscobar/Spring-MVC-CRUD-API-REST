@@ -7,12 +7,10 @@ $(document).ready(function() {
 	}
 
 	$('#btnAgregar').click(function(event) {
-		event.preventDefault();
 		save();
 	});
 
 	$('#btnEditar').click(function(event) {
-		event.preventDefault();
 		update();
 	});
 	
@@ -70,6 +68,7 @@ function loadForm(idEdit) {
 			$("#apellido").val(result.apellido);
 			$("#email").val(result.email);
 			$("#password").val(result.password);
+			//esta linea
 			$("#roles").val(result.roles);			
 			console.log("Usuario a editar cargado");
 		},
@@ -94,7 +93,7 @@ function save() {
 		contentType : "application/json",
 		url : baseURL + "/api/usuarios",
 		data : JSON.stringify(usuario),
-		dataType : "json",
+		dataType : "text",
 		success : function(result){
 			console.log("Usuario agregado");
 		},
@@ -120,7 +119,7 @@ function update() {
 		contentType : "application/json",
 		url : baseURL + "/api/usuarios/" + usuario.id,
 		data : JSON.stringify(usuario),
-		dataType : "json",
+		dataType : "text",
 		success : function(result){
 			console.log("Usuario actualizado");
 		},

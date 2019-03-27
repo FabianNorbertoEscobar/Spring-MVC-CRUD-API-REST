@@ -1,5 +1,6 @@
 package ar.com.factorit.fescobar.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +23,12 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name = "Rol")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Rol {
+public class Rol implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -768359305180399097L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -21,8 +21,8 @@ function loadTable() {
 		data : rol,
 		dataType : "json",
 		success: function(result) {
-			var html = "";
 			$.each(result, function(index, item) {
+				var html = "";
 				html += "<tr>";
 				html += "<td>" + item.nombre + "</td>";
 				html += "<td>" + item.descripcion + "</td>";
@@ -35,13 +35,12 @@ function loadTable() {
 				html += "<td>" + "<a href = \"/roles/update/" + item.id + "\" id = \"btnEditar" + item.id + "\" class = \"btn btn-info center-block\"><i class = \"glyphicon glyphicon-edit\"></i>Editar</a></td>";
 				html += "<td>" + "<a href = \"/roles/delete/" + item.id + "\" id = \"btnEliminar" + item.id + "\" class = \"btn btn-danger center-block\"><i class = \"glyphicon glyphicon-trash\"></i>Eliminar</a></td>";
 				html += "</tr>";
+				$("#tbodyContent").append(html);
 				
-				$("#btnEliminar" + item.id).click(function(event) {
-					event.preventDefault();
+				$('#btnEliminar' + item.id).click(function(event) {
 					remove(item.id);
 				});
 			})
-			$("#tbodyContent").append(html);
 			console.log("Roles cargados");
 		},
 		error : function(event) {

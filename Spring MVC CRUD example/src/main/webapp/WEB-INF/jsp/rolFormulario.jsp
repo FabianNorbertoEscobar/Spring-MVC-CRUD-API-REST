@@ -15,7 +15,8 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<c:set var="baseURL" value="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}" />
+<c:set var="baseURL"
+	value="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}" />
 <script type="text/javascript">
 	var baseURL = '${baseURL}';
 </script>
@@ -90,12 +91,12 @@
 							<br />
 							<c:choose>
 								<c:when test="${rol.id != -1 }">
-									<form:button id="btnEditar"
-										class="btn btn-success center-block">Editar</form:button>
+									<a href="/roles" id="btnEditar" class="btn btn-success"><i
+										class="glyphicon glyphicon-check"></i> Editar</a>
 								</c:when>
 								<c:otherwise>
-									<form:button id="btnAgregar"
-										class="btn btn-success center-block">Agregar</form:button>
+									<a href="/roles" id="btnAgregar" class="btn btn-success"><i
+										class="glyphicon glyphicon-check"></i> Agregar</a>
 								</c:otherwise>
 							</c:choose>
 						</form:form>

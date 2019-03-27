@@ -33,7 +33,7 @@ public class RolRestController {
 		return ResponseEntity.ok().body(rol);
 	}
 
-	@RequestMapping(value = "/roles", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value = "/roles", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> save(@RequestBody Rol rol) {
 		rolService.save(rol);
 		return ResponseEntity.ok().body("Rol agregado");

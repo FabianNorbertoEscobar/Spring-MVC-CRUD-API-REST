@@ -5,12 +5,10 @@ $(document).ready(function() {
 	}
 	
 	$('#btnAgregar').click(function(event) {
-		event.preventDefault();
 		save();
 	});
 
 	$('#btnEditar').click(function(event) {
-		event.preventDefault();
 		update();
 	});
 	
@@ -37,8 +35,8 @@ function loadForm(idEdit) {
 			$("#nombre").val(result.nombre);
 			$("#descripcion").val(result.descripcion);
 			$("#fechaCreacion").val(result.fechaCreacion);
+			//esta linea
 			$("#estado").val(result.estado);
-			$("#usuarios").val(result.usuarios);
 			console.log("Rol a editar cargado");
 		},
 		error : function(event) {
@@ -63,7 +61,7 @@ function save() {
 		contentType : "application/json",
 		url : baseURL + "/api/roles",
 		data : JSON.stringify(rol),
-		dataType : "json",
+		dataType : "text",
 		success : function(result){
 			console.log("Rol agregado");
 		},
@@ -89,7 +87,7 @@ function update() {
 		contentType : "application/json",
 		url : baseURL + "/api/roles/" + rol.id,
 		data : JSON.stringify(rol),
-		dataType : "json",
+		dataType : "text",
 		success : function(result){
 			console.log("Rol actualizado");
 		},
