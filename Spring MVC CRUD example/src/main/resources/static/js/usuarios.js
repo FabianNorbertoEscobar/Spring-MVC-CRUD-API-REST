@@ -30,7 +30,7 @@ function loadTable() {
 				html += "<td>";
 				for (var i = 0; i < item.roles.length; i++) {
 					if (i != 0) {
-						html += ", "
+						html += ", ";
 					}
 					html +=  item.roles[i].nombre;
 				}

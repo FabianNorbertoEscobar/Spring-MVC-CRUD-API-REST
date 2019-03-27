@@ -45,7 +45,8 @@ public class Usuario implements Serializable{
 	@Column(name = "password", nullable = false)
 	private String password;
 
-	@ManyToMany(cascade = { CascadeType.ALL })
+//	@ManyToMany(cascade = { CascadeType.ALL })
+	@ManyToMany
 	@JoinTable(name = "UsuarioRoles", joinColumns = { @JoinColumn(name = "idUsuario") }, inverseJoinColumns = {
 			@JoinColumn(name = "idRol") })
 //	@JsonManagedReference

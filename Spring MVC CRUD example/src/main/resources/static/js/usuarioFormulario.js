@@ -68,8 +68,10 @@ function loadForm(idEdit) {
 			$("#apellido").val(result.apellido);
 			$("#email").val(result.email);
 			$("#password").val(result.password);
-			//esta linea
-			$("#roles").val(result.roles);			
+			$("#roles").val(result.roles);
+			for (var i = 0; i < result.roles.length; i++) {
+				$(":checkbox[value=" + result.roles[i].id + "]").prop("checked", true);
+			}
 			console.log("Usuario a editar cargado");
 		},
 		error : function(event) {
@@ -86,8 +88,14 @@ function save() {
 		apellido : $("#apellido").val(),
 		email : $("#email").val(),
 		password : $("#password").val(),
-		roles : $("#roles").val()
+		roles : new Array()
 	};
+	
+	$(":checked").each(function() {
+		var rol = { id : Number($(this).val()) };
+		usuario.roles.push(rol);
+	});
+		
 	$.ajax({
 		type : "POST",
 		contentType : "application/json",
@@ -111,9 +119,14 @@ function update() {
 		apellido : $("#apellido").val(),
 		email : $("#email").val(),
 		password : $("#password").val(),
-		roles : $("#roles").val()
+		roles : new Array()
 	};
 	
+	$(":checked").each(function() {
+		var rol = { id : Number($(this).val()) };
+		usuario.roles.push(rol);
+	});
+		
 	$.ajax({
 		type : "PUT",
 		contentType : "application/json",

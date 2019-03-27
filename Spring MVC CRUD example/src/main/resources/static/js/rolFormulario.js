@@ -35,8 +35,14 @@ function loadForm(idEdit) {
 			$("#nombre").val(result.nombre);
 			$("#descripcion").val(result.descripcion);
 			$("#fechaCreacion").val(result.fechaCreacion);
-			//esta linea
 			$("#estado").val(result.estado);
+			if (result.estado) {
+				$(":radio[value=true]").prop("checked", true);
+				$(":radio[value=false]").prop("checked", false);
+			} else {
+				$(":radio[value=true]").prop("checked", false);
+				$(":radio[value=false]").prop("checked", true);
+			}			
 			console.log("Rol a editar cargado");
 		},
 		error : function(event) {
@@ -56,6 +62,14 @@ function save() {
 		usuarios : $("#usuarios").val()
 	};
 	
+	$(":checked").each(function() {
+		if ($(this).val() == "true") {
+			rol.estado = true;
+		} else {
+			rol.estado = false;
+		}
+	});
+		
 	$.ajax({
 		type : "POST",
 		contentType : "application/json",
@@ -81,6 +95,14 @@ function update() {
 		estado : $("#estado").val(),
 		usuarios : $("#usuarios").val()
 	};
+	
+	$(":checked").each(function() {
+		if ($(this).val() == "true") {
+			rol.estado = true;
+		} else {
+			rol.estado = false;
+		}
+	});
 	
 	$.ajax({
 		type : "PUT",
