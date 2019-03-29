@@ -1,0 +1,25 @@
+body {
+	background: #e6e6e6;
+}
+
+h2 {
+	float: right;
+}
+
+header,.wrapper ,footer {
+	width: 90%;
+	margin: 10px auto;
+}
+
+header {
+	background: #FF9308;
+	overflow: hidden;
+}
+
+footer {
+	background: black;
+	color: white;
+	clear: both;
+	padding: 10px 0px;
+	text-align: center;
+}

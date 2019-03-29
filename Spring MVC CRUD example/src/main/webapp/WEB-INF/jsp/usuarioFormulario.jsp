@@ -22,7 +22,7 @@
 </script>
 
 <script type="text/javascript">
-	var usuario_id = ${usuario.id };
+	var usuario_id = ${usuario.id};
 </script>
 <script src="${baseURL}/js/usuarioFormulario.js"></script>
 
@@ -102,20 +102,28 @@
 							<br />
 							<div class="form-group">
 								<form:label path="roles" class="col-md-3">Rol:</form:label>
-								<div class="col-md-9" id="listaRoles"></div>
+								<div class="col-md-9" id="listaRoles">
+									<input type="checkbox" name="select-all" id="select-all" />SELECT ALL
+									<br /><br />
+								</div>
 							</div>
 							<br />
 							<br />
-							<c:choose>
-								<c:when test="${usuario.id != -1 }">
-									<a href="/usuarios" id="btnEditar" class="btn btn-success"><i
-										class="glyphicon glyphicon-check"></i> Editar</a>
-								</c:when>
-								<c:otherwise>
-									<a href="/usuarios" id="btnAgregar" class="btn btn-success"><i
-										class="glyphicon glyphicon-check"></i> Agregar</a>
-								</c:otherwise>
-							</c:choose>
+							<br />
+							<div class="form-group">
+								<c:choose>
+									<c:when test="${usuario.id != -1 }">
+										<a href="/usuarios" id="btnEditar" class="btn btn-success"><i
+											class="glyphicon glyphicon-check"></i> Editar</a>
+									</c:when>
+									<c:otherwise>
+										<a href="/usuarios" id="btnAgregar" class="btn btn-success"><i
+											class="glyphicon glyphicon-check"></i> Agregar</a>
+									</c:otherwise>
+								</c:choose>
+								<a href="/usuarios" id="btnVolver" class="btn btn-danger"><i
+									class="glyphicon glyphicon-chevron-left"></i> Volver</a>
+							</div>
 						</form:form>
 					</div>
 				</div>

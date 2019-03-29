@@ -22,7 +22,7 @@
 </script>
 
 <script type="text/javascript">
-	var rol_id = ${rol.id };
+	var rol_id = ${rol.id};
 </script>
 <script src="${baseURL}/js/rolFormulario.js"></script>
 
@@ -101,16 +101,21 @@
 							</div>
 							<br />
 							<br />
-							<c:choose>
-								<c:when test="${rol.id != -1 }">
-									<a href="/roles" id="btnEditar" class="btn btn-success"><i
-										class="glyphicon glyphicon-check"></i> Editar</a>
-								</c:when>
-								<c:otherwise>
-									<a href="/roles" id="btnAgregar" class="btn btn-success"><i
-										class="glyphicon glyphicon-check"></i> Agregar</a>
-								</c:otherwise>
-							</c:choose>
+							<br />
+							<div class="form-group">
+								<c:choose>
+									<c:when test="${rol.id != -1 }">
+										<a href="/roles" id="btnEditar" class="btn btn-success"><i
+											class="glyphicon glyphicon-check"></i> Editar</a>
+									</c:when>
+									<c:otherwise>
+										<a href="/roles" id="btnAgregar" class="btn btn-success"><i
+											class="glyphicon glyphicon-check"></i> Agregar</a>
+									</c:otherwise>
+								</c:choose>
+								<a href="/roles" id="btnVolver" class="btn btn-danger"><i
+									class="glyphicon glyphicon-chevron-left"></i> Volver</a>
+							</div>
 						</form:form>
 
 					</div>

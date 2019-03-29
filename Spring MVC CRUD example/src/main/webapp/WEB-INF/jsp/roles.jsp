@@ -54,6 +54,8 @@
 						<br /> <br /> <a href="/roles/form" id="btnAgregar"
 							class="btn btn-success"><i class="glyphicon glyphicon-check"></i>
 							Agregar nuevo rol</a>
+							<a href="/index" id="btnIndex" class="btn btn-primary"><i
+									class="glyphicon glyphicon-home"></i> Inicio</a>
 					</div>
 				</div>
 			</div>
