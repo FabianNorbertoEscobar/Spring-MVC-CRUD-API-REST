@@ -2,41 +2,18 @@ package ar.com.factorit.fescobar.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import ar.com.factorit.fescobar.model.Usuario;
-import ar.com.factorit.fescobar.repository.UsuarioRepository;
 
-@Service
-public class UsuarioService{
+public interface UsuarioService {
 
-	@Autowired
-	private UsuarioRepository usuarioRepository;
+	public List<Usuario> findAll();
 
-	@Transactional
-	public List<Usuario> findAll() {
-		return usuarioRepository.findAll();
-	}
+	public Usuario findOne(int id);
 
-	@Transactional
-	public Usuario findOne(int id) {
-		return usuarioRepository.findOne(id);
-	}
+	public boolean save(Usuario usuario);
 
-	@Transactional
-	public boolean save(Usuario usuario) {
-		return usuarioRepository.save(usuario) != null;
-	}
+	public boolean update(Usuario usuario);
 
-	@Transactional
-	public boolean update(Usuario usuario) {
-		return usuarioRepository.save(usuario) != null;
-	}
+	public void delete(int id);
 
-	@Transactional
-	public void delete(int id) {
-		usuarioRepository.delete(id);
-	}
 }

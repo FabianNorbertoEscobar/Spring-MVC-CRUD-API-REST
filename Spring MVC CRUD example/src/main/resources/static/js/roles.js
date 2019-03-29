@@ -32,7 +32,7 @@ function loadTable() {
 				} else {
 					html += "<td>Inactivo</td>";
 				}
-				html += "<td>" + "<a href = \"/roles/update/" + item.id + "\" id = \"btnEditar" + item.id + "\" class = \"btn btn-info center-block\"><i class = \"glyphicon glyphicon-edit\"></i>Editar</a></td>";
+				html += "<td>" + "<a href = \"/roles/form/" + item.id + "\" id = \"btnEditar" + item.id + "\" class = \"btn btn-info center-block\"><i class = \"glyphicon glyphicon-edit\"></i>Editar</a></td>";
 				html += "<td>" + "<a href = \"/roles/delete/" + item.id + "\" id = \"btnEliminar" + item.id + "\" class = \"btn btn-danger center-block\"><i class = \"glyphicon glyphicon-trash\"></i>Eliminar</a></td>";
 				html += "</tr>";
 				$("#tbodyContent").append(html);

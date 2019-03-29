@@ -35,7 +35,7 @@ function loadTable() {
 					html +=  item.roles[i].nombre;
 				}
 				html += "</td>";
-				html += "<td>" + "<a href = \"/usuarios/update/" + item.id + "\" id = \"btnEditar" + item.id + "\" class = \"btn btn-info center-block\"><i class = \"glyphicon glyphicon-edit\"></i>Editar</a></td>";
+				html += "<td>" + "<a href = \"/usuarios/form/" + item.id + "\" id = \"btnEditar" + item.id + "\" class = \"btn btn-info center-block\"><i class = \"glyphicon glyphicon-edit\"></i>Editar</a></td>";
 				html += "<td>" + "<a href = \"/usuarios/delete/" + item.id + "\" id = \"btnEliminar" + item.id + "\" class = \"btn btn-danger center-block\"><i class = \"glyphicon glyphicon-trash\"></i>Eliminar</a></td>";
 				html += "</tr>";
 				$("#tbodyContent").append(html);

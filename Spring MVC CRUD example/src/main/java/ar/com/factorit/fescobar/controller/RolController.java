@@ -16,7 +16,7 @@ public class RolController {
 		return "roles";
 	}
 
-	@RequestMapping(value = "/roles/save", method = RequestMethod.GET)
+	@RequestMapping(value = "/roles/form", method = RequestMethod.GET)
 	public String save(Model model) {
 		Rol rol = new Rol();
 		rol.setId(-1);
@@ -24,7 +24,7 @@ public class RolController {
 		return "rolFormulario";
 	}
 
-	@RequestMapping(value = "/roles/update/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/roles/form/{id}", method = RequestMethod.GET)
 	public String update(@PathVariable("id") Integer id, Model model) {
 		Rol rol = new Rol();
 		rol.setId(id);

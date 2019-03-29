@@ -2,7 +2,6 @@ package ar.com.factorit.fescobar.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -50,22 +49,7 @@ public class Rol implements Serializable {
 
 	@ManyToMany(mappedBy = "roles")
 	@JsonBackReference
-	private Set<Usuario> usuarios = new HashSet<Usuario>();
-
-	public Rol(Integer id, String nombre, String descripcion, Date fechaCreacion, boolean estado,
-			Set<Usuario> usuarios) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.fechaCreacion = fechaCreacion;
-		this.estado = estado;
-		this.usuarios = usuarios;
-	}
-
-	public Rol() {
-
-	}
+	private Set<Usuario> usuarios;
 
 	public Integer getId() {
 		return id;

@@ -51,7 +51,7 @@
 								</tbody>
 							</table>
 						</div>
-						<br /> <br /> <a href="/usuarios/save" id="btnAgregar"
+						<br /> <br /> <a href="/usuarios/form" id="btnAgregar"
 							class="btn btn-success"><i class="glyphicon glyphicon-check"></i>
 							Agregar nuevo usuario</a>
 					</div>

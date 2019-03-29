@@ -2,41 +2,18 @@ package ar.com.factorit.fescobar.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import ar.com.factorit.fescobar.model.Rol;
-import ar.com.factorit.fescobar.repository.RolRepository;
 
-@Service
-public class RolService {
+public interface RolService {
 
-	@Autowired
-	private RolRepository rolRepository;
+	public List<Rol> findAll();
 
-	@Transactional
-	public List<Rol> findAll() {
-		return rolRepository.findAll();
-	}
+	public Rol findOne(int id);
 
-	@Transactional
-	public Rol findOne(int id) {
-		return rolRepository.findOne(id);
-	}
+	public boolean save(Rol rol);
 
-	@Transactional
-	public boolean save(Rol rol) {
-		return rolRepository.save(rol) != null;
-	}
+	public boolean update(Rol rol);
 
-	@Transactional
-	public boolean update(Rol rol) {
-		return rolRepository.save(rol) != null;
-	}
+	public void delete(int id);
 
-	@Transactional
-	public void delete(int id) {
-		rolRepository.delete(id);
-	}
 }

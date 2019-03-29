@@ -22,7 +22,7 @@
 </script>
 
 <script type="text/javascript">
-	var rol_id = ${rol.id};
+	var rol_id = ${rol.id };
 </script>
 <script src="${baseURL}/js/rolFormulario.js"></script>
 
@@ -47,7 +47,19 @@
 					</div>
 
 					<div class="panel-body">
-						<form:form method="post" action="/roles/save" modelAttribute="rol">
+						<c:choose>
+							<c:when test="${rol.id != -1 }">
+								<c:set var="methodForm" value="put" />
+								<c:set var="actionForm" value="/roles/form/${rol.id }" />
+							</c:when>
+							<c:otherwise>
+								<c:set var="methodForm" value="post" />
+								<c:set var="actionForm" value="/roles/form/" />
+							</c:otherwise>
+						</c:choose>
+
+						<form:form method="${methodForm }" action="${actionForm }"
+							modelAttribute="rol">
 							<form:hidden path="id" />
 							<div class="form-group">
 								<form:label path="nombre" class="col-md-3">Nombre:</form:label>

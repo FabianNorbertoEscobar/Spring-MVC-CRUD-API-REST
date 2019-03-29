@@ -51,7 +51,7 @@
 								</tbody>
 							</table>
 						</div>
-						<br /> <br /> <a href="/roles/save" id="btnAgregar"
+						<br /> <br /> <a href="/roles/form" id="btnAgregar"
 							class="btn btn-success"><i class="glyphicon glyphicon-check"></i>
 							Agregar nuevo rol</a>
 					</div>

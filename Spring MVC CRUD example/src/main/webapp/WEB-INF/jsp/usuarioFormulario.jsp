@@ -22,7 +22,7 @@
 </script>
 
 <script type="text/javascript">
-	var usuario_id = ${usuario.id};
+	var usuario_id = ${usuario.id };
 </script>
 <script src="${baseURL}/js/usuarioFormulario.js"></script>
 
@@ -48,7 +48,18 @@
 					</div>
 
 					<div class="panel-body">
-						<form:form method="post" action="/usuarios/save"
+						<c:choose>
+							<c:when test="${usuario.id != -1 }">
+								<c:set var="methodForm" value="put" />
+								<c:set var="actionForm" value="/usuarios/form/${usuario.id }" />
+							</c:when>
+							<c:otherwise>
+								<c:set var="methodForm" value="post" />
+								<c:set var="actionForm" value="/usuarios/form/" />
+							</c:otherwise>
+						</c:choose>
+
+						<form:form method="${methodForm }" action="${actionForm }"
 							modelAttribute="usuario">
 							<form:hidden path="id" />
 							<div class="form-group">

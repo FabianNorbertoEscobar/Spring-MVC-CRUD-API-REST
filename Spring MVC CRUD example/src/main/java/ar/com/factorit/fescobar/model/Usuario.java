@@ -1,7 +1,6 @@
 package ar.com.factorit.fescobar.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -16,13 +15,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "Usuario")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
 
 	/**
 	 * 
@@ -45,26 +43,10 @@ public class Usuario implements Serializable{
 	@Column(name = "password", nullable = false)
 	private String password;
 
-//	@ManyToMany(cascade = { CascadeType.ALL })
-	@ManyToMany
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "UsuarioRoles", joinColumns = { @JoinColumn(name = "idUsuario") }, inverseJoinColumns = {
 			@JoinColumn(name = "idRol") })
-//	@JsonManagedReference
-	private Set<Rol> roles = new HashSet<Rol>();
-
-	public Usuario(Integer id, String nombre, String apellido, String email, String password, Set<Rol> roles) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.email = email;
-		this.password = password;
-		this.roles = roles;
-	}
-
-	public Usuario() {
-
-	}
+	private Set<Rol> roles;
 
 	public Integer getId() {
 		return id;

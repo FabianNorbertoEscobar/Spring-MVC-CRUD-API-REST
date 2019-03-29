@@ -16,7 +16,7 @@ public class UsuarioController {
 		return "usuarios";
 	}
 
-	@RequestMapping(value = "/usuarios/save", method = RequestMethod.GET)
+	@RequestMapping(value = "/usuarios/form", method = RequestMethod.GET)
 	public String save(Model model) {
 		Usuario usuario = new Usuario();
 		usuario.setId(-1);
@@ -24,7 +24,7 @@ public class UsuarioController {
 		return "usuarioFormulario";
 	}
 
-	@RequestMapping(value = "/usuarios/update/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/usuarios/form/{id}", method = RequestMethod.GET)
 	public String update(@PathVariable("id") Integer id, Model model) {
 		Usuario usuario = new Usuario();
 		usuario.setId(id);

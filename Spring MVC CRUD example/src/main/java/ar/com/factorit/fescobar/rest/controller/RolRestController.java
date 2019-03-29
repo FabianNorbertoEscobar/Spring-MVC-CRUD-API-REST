@@ -11,43 +11,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import ar.com.factorit.fescobar.model.Rol;
-import ar.com.factorit.fescobar.service.RolService;
+import ar.com.factorit.fescobar.dto.RolDTO;
+import ar.com.factorit.fescobar.facade.RolFacade;
 
 @RestController
 @RequestMapping("/api")
 public class RolRestController {
 
 	@Autowired
-	RolService rolService;
+	private RolFacade rolFacade;
 
 	@RequestMapping(value = "/roles", method = RequestMethod.GET)
-	public ResponseEntity<List<Rol>> findAll() {
-		List<Rol> roles = rolService.findAll();
-		return ResponseEntity.ok().body(roles);
+	public ResponseEntity<List<RolDTO>> findAll() {
+		List<RolDTO> rolesDTO = rolFacade.findAll();
+		return ResponseEntity.ok().body(rolesDTO);
 	}
 
 	@RequestMapping(value = "/roles/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Rol> findOne(@PathVariable("id") Integer id) {
-		Rol rol = rolService.findOne(id);
-		return ResponseEntity.ok().body(rol);
+	public ResponseEntity<RolDTO> findOne(@PathVariable("id") Integer id) {
+		RolDTO rolDTO = rolFacade.findOne(id);
+		return ResponseEntity.ok().body(rolDTO);
 	}
 
 	@RequestMapping(value = "/roles", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> save(@RequestBody Rol rol) {
-		rolService.save(rol);
+	public ResponseEntity<?> save(@RequestBody RolDTO rolDTO) {
+		rolFacade.save(rolDTO);
 		return ResponseEntity.ok().body("Rol agregado");
 	}
 
 	@RequestMapping(value = "/roles/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Rol rol) {
-		rolService.update(rol);
+	public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody RolDTO rolDTO) {
+		rolFacade.update(rolDTO);
 		return ResponseEntity.ok().body("Rol actualizado");
 	}
 
 	@RequestMapping(value = "/roles/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
-		rolService.delete(id);
+		rolFacade.delete(id);
 		return ResponseEntity.ok().body("Rol eliminado");
 	}
 }

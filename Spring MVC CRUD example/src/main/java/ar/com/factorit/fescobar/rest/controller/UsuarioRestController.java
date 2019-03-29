@@ -11,47 +11,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import ar.com.factorit.fescobar.model.Usuario;
-import ar.com.factorit.fescobar.service.RolService;
-import ar.com.factorit.fescobar.service.UsuarioService;
+import ar.com.factorit.fescobar.dto.UsuarioDTO;
+import ar.com.factorit.fescobar.facade.UsuarioFacade;
 
 @RestController
 @RequestMapping("/api")
 public class UsuarioRestController {
 
 	@Autowired
-	UsuarioService usuarioService;
-
-	@Autowired
-	RolService rolService;
+	private UsuarioFacade usuarioFacade;
 
 	@RequestMapping(value = "/usuarios", method = RequestMethod.GET)
-	public ResponseEntity<List<Usuario>> findAll() {
-		List<Usuario> usuarios = usuarioService.findAll();
-		return ResponseEntity.ok().body(usuarios);
+	public ResponseEntity<List<UsuarioDTO>> findAll() {
+		List<UsuarioDTO> usuariosDTO = usuarioFacade.findAll();
+		return ResponseEntity.ok().body(usuariosDTO);
 	}
 
 	@RequestMapping(value = "/usuarios/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Usuario> findOne(@PathVariable("id") Integer id) {
-		Usuario usuario = usuarioService.findOne(id);
-		return ResponseEntity.ok().body(usuario);
+	public ResponseEntity<UsuarioDTO> findOne(@PathVariable("id") Integer id) {
+		UsuarioDTO usuarioDTO = usuarioFacade.findOne(id);
+		return ResponseEntity.ok().body(usuarioDTO);
 	}
 
 	@RequestMapping(value = "/usuarios", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<?> save(@RequestBody Usuario usuario) {
-		usuarioService.save(usuario);
+	public ResponseEntity<?> save(@RequestBody UsuarioDTO usuarioDTO) {
+		usuarioFacade.save(usuarioDTO);
 		return ResponseEntity.ok().body("Usuario agregado");
 	}
 
 	@RequestMapping(value = "/usuarios/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody Usuario usuario) {
-		usuarioService.update(usuario);
+	public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody UsuarioDTO usuarioDTO) {
+		usuarioFacade.update(usuarioDTO);
 		return ResponseEntity.ok().body("Usuario actualizado");
 	}
 
 	@RequestMapping(value = "/usuarios/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
-		usuarioService.delete(id);
+		usuarioFacade.delete(id);
 		return ResponseEntity.ok().body("Usuario eliminado");
 	}
+
 }
