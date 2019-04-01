@@ -63,6 +63,19 @@ $(document).ready(function() {
 		}
 	});
 	
+	$('#formRol').on('status.field.bv', function(e, data) {
+        formIsValid = true;
+        $('.form-group', $(this)).each( function() {
+            formIsValid = formIsValid && $(this).hasClass('has-success');
+        });
+        
+        if(formIsValid) {
+            $('.submit-button', $(this)).attr('disabled', false);
+        } else {
+            $('.submit-button', $(this)).attr('disabled', true);
+        }
+    });
+	
 });
 
 function loadForm(idEdit) {

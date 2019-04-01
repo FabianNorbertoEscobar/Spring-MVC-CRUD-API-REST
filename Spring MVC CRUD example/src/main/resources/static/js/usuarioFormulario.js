@@ -4,6 +4,7 @@ $(document).ready(function() {
 	
 	if(usuario_id != -1) {
 		loadForm(usuario_id);
+		$('input[name="password"]', $(this)).attr('disabled', true);
 	}
 
 	$('#btnAgregar').click(function(event) {
@@ -80,6 +81,18 @@ $(document).ready(function() {
 		}
 	});
 
+	$('#formUsuario').on('status.field.bv', function(e, data) {
+        formIsValid = true;
+        $('.form-group', $(this)).each( function() {
+            formIsValid = formIsValid && $(this).hasClass('has-success');
+        });
+        
+        if(formIsValid) {
+            $('.submit-button', $(this)).attr('disabled', false);
+        } else {
+            $('.submit-button', $(this)).attr('disabled', true);
+        }
+    });
 	
 });
 

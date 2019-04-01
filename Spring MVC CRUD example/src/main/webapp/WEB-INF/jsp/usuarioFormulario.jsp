@@ -93,6 +93,24 @@
 							</div>
 							<br />
 							<br />
+							<c:if test="${usuario.id != -1 }">
+								<div class="form-group">
+									<label for="nuevo" class="col-md-3">Nuevo Password:</label>
+									<div class="col-md-9">
+										<input type="password" name="nuevo" placeholder="Ingrese nuevo password" class="form-control"/>
+									</div>
+								</div>
+								<br />
+								<br />
+								<div class="form-group">
+									<label for="confirmar" class="col-md-3">Confirmar Password:</label>
+									<div class="col-md-9">
+										<input type="password" name="confirmar" placeholder="Confirme nuevo password" class="form-control"/>
+									</div>
+								</div>
+								<br />
+								<br />
+							</c:if>
 							<div class="form-group">
 								<form:label path="roles" class="col-md-3">Rol:</form:label>
 								<div class="col-md-9" id="listaRoles">
@@ -106,12 +124,12 @@
 							<div class="form-group">
 								<c:choose>
 									<c:when test="${usuario.id != -1 }">
-										<form:button type="sumbit" id="btnEditar" class="btn btn-success">
+										<form:button type="sumbit" id="btnEditar" class="btn btn-success submit-button">
 											<i class="glyphicon glyphicon-check"></i> Editar
 										</form:button>
 									</c:when>
 									<c:otherwise>
-										<form:button type="sumbit" id="btnAgregar" class="btn btn-success">
+										<form:button type="sumbit" id="btnAgregar" class="btn btn-success submit-button">
 											<i class="glyphicon glyphicon-check"></i> Agregar
 										</form:button>
 									</c:otherwise>

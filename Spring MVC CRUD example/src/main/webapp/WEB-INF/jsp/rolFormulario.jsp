@@ -98,12 +98,12 @@
 							<div class="form-group">
 								<c:choose>
 									<c:when test="${rol.id != -1 }">
-										<form:button type="sumbit" id="btnEditar" class="btn btn-success">
+										<form:button type="sumbit" id="btnEditar" class="btn btn-success submit-button">
 											<i class="glyphicon glyphicon-check"></i> Editar
 										</form:button>
 									</c:when>
 									<c:otherwise>
-										<form:button type="sumbit" id="btnAgregar" class="btn btn-success">
+										<form:button type="sumbit" id="btnAgregar" class="btn btn-success submit-button">
 											<i class="glyphicon glyphicon-check"></i> Agregar
 										</form:button>
 									</c:otherwise>
