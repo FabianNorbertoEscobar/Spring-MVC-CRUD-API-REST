@@ -77,6 +77,22 @@ $(document).ready(function() {
 						message : "El password es requerido"
 					}
 				}
+			},
+			nuevo : {
+				validators : {
+					identical : {
+						field : "confirmar",
+						message : "El nuevo password y su confirmaci&oacute;n deben coincidir"
+					}
+				}
+			},
+			confirmar : {
+				validators : {
+					identical : {
+						field : "nuevo",
+						message : "El nuevo password y su confirmaci&oacute;n deben coincidir"
+					}
+				}
 			}
 		}
 	});
@@ -201,6 +217,10 @@ function update() {
 		password : $("#password").val(),
 		roles : new Array()
 	};
+	
+	if ($("#nuevo").val() != "") {
+		usuario.password = $("#nuevo").val();
+	} 
 	
 	$(":checked").each(function() {
 		var rol = { id : Number($(this).val()) };

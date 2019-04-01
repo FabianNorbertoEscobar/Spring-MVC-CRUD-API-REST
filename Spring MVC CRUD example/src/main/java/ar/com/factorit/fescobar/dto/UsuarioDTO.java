@@ -2,9 +2,10 @@ package ar.com.factorit.fescobar.dto;
 
 import java.util.Set;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Email;
 
 public class UsuarioDTO {
 
