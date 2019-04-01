@@ -6,13 +6,18 @@ $(document).ready(function() {
 	
 	$('#btnAgregar').click(function(event) {
 		save();
+		location.href = baseURL + "/roles";
 	});
 
 	$('#btnEditar').click(function(event) {
 		update();
+		location.href = baseURL + "/roles";
 	});
 	
 	$('#formRol').bootstrapValidator({
+		submitButtons: 'button[type="submit"]',
+		live : "enabled",
+		message : "Los valores ingresados no son v&aacute;lidos",
 		feedbackIcons : {
 			valid : "glyphicon glyphicon-ok",
 			invalid : "glyphicon glyphicon-remove",

@@ -2,6 +2,8 @@ package ar.com.factorit.fescobar.rest.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -34,13 +36,13 @@ public class UsuarioRestController {
 	}
 
 	@RequestMapping(value = "/usuarios", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<?> save(@RequestBody UsuarioDTO usuarioDTO) {
+	public ResponseEntity<?> save(@RequestBody @Valid UsuarioDTO usuarioDTO) {
 		usuarioFacade.save(usuarioDTO);
 		return ResponseEntity.ok().body("Usuario agregado");
 	}
 
 	@RequestMapping(value = "/usuarios/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody UsuarioDTO usuarioDTO) {
+	public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody @Valid UsuarioDTO usuarioDTO) {
 		usuarioFacade.update(usuarioDTO);
 		return ResponseEntity.ok().body("Usuario actualizado");
 	}

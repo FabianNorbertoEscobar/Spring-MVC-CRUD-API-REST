@@ -8,10 +8,12 @@ $(document).ready(function() {
 
 	$('#btnAgregar').click(function(event) {
 		save();
+		location.href = baseURL + "/usuarios";
 	});
 
 	$('#btnEditar').click(function(event) {
 		update();
+		location.href = baseURL + "/usuarios";
 	});
 	
 	$('#select-all').click(function(event) {   
@@ -27,6 +29,9 @@ $(document).ready(function() {
 	});
 	
 	$('#formUsuario').bootstrapValidator({
+		submitButtons: 'button[type="submit"]',
+		live : "enabled",
+		message : "Los valores ingresados no son v&aacute;lidos",
 		feedbackIcons : {
 			valid : "glyphicon glyphicon-ok",
 			invalid : "glyphicon glyphicon-remove",

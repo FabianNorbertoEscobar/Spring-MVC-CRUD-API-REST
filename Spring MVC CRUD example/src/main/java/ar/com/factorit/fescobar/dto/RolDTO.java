@@ -2,7 +2,6 @@ package ar.com.factorit.fescobar.dto;
 
 import java.util.Date;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -14,11 +13,11 @@ public class RolDTO {
 
 	private Integer id;
 	
-	@NotEmpty(message = "El nombre es requerido")
+	@NotNull(message = "El nombre es requerido")
 	@Pattern(regexp = "^([a-zA-Z]+\\s)*[a-zA-Z]+$", message = "El nombre solo puede tener letras y espacios no consecutivos")
 	private String nombre;
 	
-	@NotEmpty(message = "La descripción es requerida")
+	@NotNull(message = "La descripción es requerida")
 	@Pattern(regexp = "^([a-zA-Z]+\\s)*[a-zA-Z]+$", message = "La descripción solo puede tener letras y espacios no consecutivos")
 	private String descripcion;
 	

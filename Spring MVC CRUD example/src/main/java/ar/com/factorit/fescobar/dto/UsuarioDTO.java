@@ -3,26 +3,26 @@ package ar.com.factorit.fescobar.dto;
 import java.util.Set;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 public class UsuarioDTO {
 
 	private Integer id;
 
-	@NotEmpty(message = "El nombre es requerido")
+	@NotNull(message = "El nombre es requerido")
 	@Pattern(regexp = "^([a-zA-Z]+\\s)*[a-zA-Z]+$", message = "El nombre solo puede tener letras y espacios no consecutivos")
 	private String nombre;
 
-	@NotEmpty(message = "El apellido es requerido")
+	@NotNull(message = "El apellido es requerido")
 	@Pattern(regexp = "^([a-zA-Z]+\\s)*[a-zA-Z]+$", message = "El apellido solo puede tener letras y espacios no consecutivos")
 	private String apellido;
 
-	@NotEmpty(message = "El email es requerido")
+	@NotNull(message = "El email es requerido")
 	@Email(message = "El email debe tener un formato válido")
 	private String email;
 
-	@NotEmpty(message = "El password es requerido")
+	@NotNull(message = "El password es requerido")
 	private String password;
 
 	private Set<RolDTO> roles;

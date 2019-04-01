@@ -106,12 +106,14 @@
 							<div class="form-group">
 								<c:choose>
 									<c:when test="${usuario.id != -1 }">
-										<a href="/usuarios" id="btnEditar" type="submit" class="btn btn-success"><i
-											class="glyphicon glyphicon-check"></i> Editar</a>
+										<form:button type="sumbit" id="btnEditar" class="btn btn-success">
+											<i class="glyphicon glyphicon-check"></i> Editar
+										</form:button>
 									</c:when>
 									<c:otherwise>
-										<a href="/usuarios" id="btnAgregar" type="submit" class="btn btn-success"><i
-											class="glyphicon glyphicon-check"></i> Agregar</a>4
+										<form:button type="sumbit" id="btnAgregar" class="btn btn-success">
+											<i class="glyphicon glyphicon-check"></i> Agregar
+										</form:button>
 									</c:otherwise>
 								</c:choose>
 								<a href="/usuarios" id="btnVolver" class="btn btn-danger"><i
