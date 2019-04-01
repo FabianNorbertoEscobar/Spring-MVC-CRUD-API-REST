@@ -8,12 +8,17 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
+<script type="text/javascript"
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
 
 <c:set var="baseURL"
 	value="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}" />
@@ -47,24 +52,12 @@
 					</div>
 
 					<div class="panel-body">
-						<c:choose>
-							<c:when test="${rol.id != -1 }">
-								<c:set var="methodForm" value="put" />
-								<c:set var="actionForm" value="/roles/form/${rol.id }" />
-							</c:when>
-							<c:otherwise>
-								<c:set var="methodForm" value="post" />
-								<c:set var="actionForm" value="/roles/form/" />
-							</c:otherwise>
-						</c:choose>
-
-						<form:form method="${methodForm }" action="${actionForm }"
-							modelAttribute="rol">
+						<form:form action="${baseURL }/roles" id="formRol" modelAttribute="rol">
 							<form:hidden path="id" />
 							<div class="form-group">
 								<form:label path="nombre" class="col-md-3">Nombre:</form:label>
 								<div class="col-md-9">
-									<form:input path="nombre" placeholder="Ingrese nombre"
+									<form:input path="nombre" name="nombre" placeholder="Ingrese nombre"
 										class="form-control" required="required" />
 								</div>
 							</div>
@@ -74,7 +67,7 @@
 							<div class="form-group">
 								<form:label path="descripcion" class="col-md-3">Descripción:</form:label>
 								<div class="col-md-9">
-									<form:input path="descripcion"
+									<form:input path="descripcion" name="descripcion"
 										placeholder="Ingrese descripcion" class="form-control"
 										required="required" />
 								</div>
@@ -84,7 +77,7 @@
 							<div class="form-group">
 								<form:label path="fechaCreacion" class="col-md-3">Fecha de Creación:</form:label>
 								<div class="col-md-9">
-									<form:input type="date" path="fechaCreacion"
+									<form:input type="date" path="fechaCreacion" name="fechaCreacion"
 										class="date form-control" required="required" />
 								</div>
 							</div>
@@ -93,9 +86,9 @@
 							<div class="form-group">
 								<form:label path="estado" class="col-md-3">Estado:</form:label>
 								<div class="col-md-9">
-									<form:radiobutton path="estado" value="true" />
+									<form:radiobutton path="estado" name="estado" value="true" />
 									Activo
-									<form:radiobutton path="estado" value="false" />
+									<form:radiobutton path="estado" name="estado" value="false" />
 									Inactivo
 								</div>
 							</div>
@@ -105,11 +98,11 @@
 							<div class="form-group">
 								<c:choose>
 									<c:when test="${rol.id != -1 }">
-										<a href="/roles" id="btnEditar" class="btn btn-success"><i
+										<a href="/roles" id="btnEditar" type="submit" class="btn btn-success"><i
 											class="glyphicon glyphicon-check"></i> Editar</a>
 									</c:when>
 									<c:otherwise>
-										<a href="/roles" id="btnAgregar" class="btn btn-success"><i
+										<a href="/roles" id="btnAgregar" type="submit" class="btn btn-success"><i
 											class="glyphicon glyphicon-check"></i> Agregar</a>
 									</c:otherwise>
 								</c:choose>

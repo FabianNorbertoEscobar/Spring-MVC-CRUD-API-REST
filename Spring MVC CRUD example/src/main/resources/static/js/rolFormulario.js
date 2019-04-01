@@ -12,6 +12,52 @@ $(document).ready(function() {
 		update();
 	});
 	
+	$('#formRol').bootstrapValidator({
+		feedbackIcons : {
+			valid : "glyphicon glyphicon-ok",
+			invalid : "glyphicon glyphicon-remove",
+			validating : "glyphicon glyphicon-refresh"
+		},
+		fields : {
+			nombre : {
+				validators : {
+					notEmpty : {
+						message : "El nombre es requerido"
+					},
+					regexp : {
+						regexp : /^([a-zA-Z]+\s)*[a-zA-Z]+$/,
+						message : "El nombre solo puede tener letras y espacios no consecutivos"
+					}
+				}
+			},
+			descripcion : {
+				validators : {
+					notEmpty : {
+						message : "La descripci&oacute;n es requerida"
+					},
+					regexp : {
+						regexp : /^([a-zA-Z]+\s)*[a-zA-Z]+$/,
+						message : "La descripci&oacute;n solo puede tener letras y espacios no consecutivos"
+					}
+				}
+			},
+			fechaCreacion : {
+				validators : {
+					notEmpty : {
+						message : "La fecha de creaci&oacute;n es requerida"
+					}
+				}
+			},
+			estado : {
+				validators : {
+					notEmpty : {
+						message : "El estado es requerido"
+					}
+				}
+			}
+		}
+	});
+	
 });
 
 function loadForm(idEdit) {

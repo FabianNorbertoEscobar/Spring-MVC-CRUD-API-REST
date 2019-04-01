@@ -7,12 +7,12 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
+<script type="text/javascript"
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <c:set var="baseURL"
@@ -29,12 +29,12 @@
 		<div class="logo">
 			<img src="${baseURL}/img/usuarios.jpg" width="70"
 				alt="Usuarios y Roles" title="Usuarios y Roles">
-			<h2 class="text-center">Sistema de Roles y Usuarios</h2>
+			<h2 class="text-center">Sistema de Usuarios y Roles </h2>
 		</div>
 
 	</header>
 	<section class="wrapper">
-		<br /> <br /> <br /> <br /> <br /> <br />
+		<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
 		<div class="main">
 			<div class="container-fluid">
 				<div class="row-fluid">

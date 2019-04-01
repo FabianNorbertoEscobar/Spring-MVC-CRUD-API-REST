@@ -8,12 +8,17 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
+<script type="text/javascript"
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
 
 <c:set var="baseURL"
 	value="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}" />
@@ -48,24 +53,12 @@
 					</div>
 
 					<div class="panel-body">
-						<c:choose>
-							<c:when test="${usuario.id != -1 }">
-								<c:set var="methodForm" value="put" />
-								<c:set var="actionForm" value="/usuarios/form/${usuario.id }" />
-							</c:when>
-							<c:otherwise>
-								<c:set var="methodForm" value="post" />
-								<c:set var="actionForm" value="/usuarios/form/" />
-							</c:otherwise>
-						</c:choose>
-
-						<form:form method="${methodForm }" action="${actionForm }"
-							modelAttribute="usuario">
+						<form:form action="${baseURL }/usuarios" id="formUsuario" modelAttribute="usuario">
 							<form:hidden path="id" />
 							<div class="form-group">
 								<form:label path="nombre" class="col-md-3">Nombre:</form:label>
 								<div class="col-md-9">
-									<form:input path="nombre" placeholder="Ingrese nombre"
+									<form:input path="nombre" name="nombre" placeholder="Ingrese nombre"
 										class="form-control" required="required" />
 								</div>
 							</div>
@@ -75,7 +68,7 @@
 							<div class="form-group">
 								<form:label path="apellido" class="col-md-3">Apellido:</form:label>
 								<div class="col-md-9">
-									<form:input path="apellido" placeholder="Ingrese apellido"
+									<form:input path="apellido" name="apellido" placeholder="Ingrese apellido"
 										class="form-control" required="required" />
 								</div>
 							</div>
@@ -84,7 +77,7 @@
 							<div class="form-group">
 								<form:label path="email" class="col-md-3">E-mail:</form:label>
 								<div class="col-md-9">
-									<form:input type="email" path="email"
+									<form:input type="email" path="email" name="email"
 										placeholder="Ingrese e-mail" class="form-control"
 										required="required" />
 								</div>
@@ -94,7 +87,7 @@
 							<div class="form-group">
 								<form:label path="password" class="col-md-3">Password:</form:label>
 								<div class="col-md-9">
-									<form:password path="password" placeholder="Ingrese password"
+									<form:password path="password" name="password" placeholder="Ingrese password"
 										class="form-control" required="required" />
 								</div>
 							</div>
@@ -113,12 +106,12 @@
 							<div class="form-group">
 								<c:choose>
 									<c:when test="${usuario.id != -1 }">
-										<a href="/usuarios" id="btnEditar" class="btn btn-success"><i
+										<a href="/usuarios" id="btnEditar" type="submit" class="btn btn-success"><i
 											class="glyphicon glyphicon-check"></i> Editar</a>
 									</c:when>
 									<c:otherwise>
-										<a href="/usuarios" id="btnAgregar" class="btn btn-success"><i
-											class="glyphicon glyphicon-check"></i> Agregar</a>
+										<a href="/usuarios" id="btnAgregar" type="submit" class="btn btn-success"><i
+											class="glyphicon glyphicon-check"></i> Agregar</a>4
 									</c:otherwise>
 								</c:choose>
 								<a href="/usuarios" id="btnVolver" class="btn btn-danger"><i

@@ -26,6 +26,56 @@ $(document).ready(function() {
 	    }
 	});
 	
+	$('#formUsuario').bootstrapValidator({
+		feedbackIcons : {
+			valid : "glyphicon glyphicon-ok",
+			invalid : "glyphicon glyphicon-remove",
+			validating : "glyphicon glyphicon-refresh"
+		},
+		fields : {
+			nombre : {
+				validators : {
+					notEmpty : {
+						message : "El nombre es requerido"
+					},
+					regexp : {
+						regexp : /^([a-zA-Z]+\s)*[a-zA-Z]+$/,
+						message : "El nombre solo puede tener letras y espacios no consecutivos"
+					}
+				}
+			},
+			apellido : {
+				validators : {
+					notEmpty : {
+						message : "El apellido es requerido"
+					},
+					regexp : {
+						regexp : /^([a-zA-Z]+\s)*[a-zA-Z]+$/,
+						message : "El apellido solo puede tener letras y espacios no consecutivos"
+					}
+				}
+			},
+			email : {
+				validators : {
+					notEmpty : {
+						message : "El email es requerido"
+					},
+					emailAddress : {
+						message : "La entrada no respeta el formato de un email"
+					}
+				}
+			},
+			password : {
+				validators : {
+					notEmpty : {
+						message : "El password es requerido"
+					}
+				}
+			}
+		}
+	});
+
+	
 });
 
 function loadCheckboxes() {
