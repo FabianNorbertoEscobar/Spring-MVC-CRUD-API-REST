@@ -6,6 +6,7 @@ $(document).ready(function() {
 		loadForm(usuario_id);
 		$('input[name="password"]', $(this)).attr('disabled', true);
 	}
+	$('.submit-button', $(this)).attr('disabled', true);
 
 	$('#btnAgregar').click(function(event) {
 		save();

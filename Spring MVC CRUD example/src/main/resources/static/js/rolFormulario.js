@@ -3,6 +3,7 @@ $(document).ready(function() {
 	if(rol_id != -1) {
 		loadForm(rol_id);
 	}
+	$('.submit-button', $(this)).attr('disabled', true);
 	
 	$('#btnAgregar').click(function(event) {
 		save();

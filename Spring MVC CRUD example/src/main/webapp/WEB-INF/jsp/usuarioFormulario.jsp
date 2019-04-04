@@ -121,22 +121,20 @@
 							<br />
 							<br />
 							<br />
-							<div class="form-group">
-								<c:choose>
-									<c:when test="${usuario.id != -1 }">
-										<form:button type="sumbit" id="btnEditar" class="btn btn-success submit-button">
-											<i class="glyphicon glyphicon-check"></i> Editar
-										</form:button>
-									</c:when>
-									<c:otherwise>
-										<form:button type="sumbit" id="btnAgregar" class="btn btn-success submit-button">
-											<i class="glyphicon glyphicon-check"></i> Agregar
-										</form:button>
-									</c:otherwise>
-								</c:choose>
-								<a href="/usuarios" id="btnVolver" class="btn btn-danger"><i
-									class="glyphicon glyphicon-chevron-left"></i> Volver</a>
-							</div>
+							<c:choose>
+								<c:when test="${usuario.id != -1 }">
+									<form:button type="submit" id="btnEditar" class="btn btn-success submit-button">
+										<i class="glyphicon glyphicon-check"></i> Editar
+									</form:button>
+								</c:when>
+								<c:otherwise>
+									<form:button type="submit" id="btnAgregar" class="btn btn-success submit-button">
+										<i class="glyphicon glyphicon-check"></i> Agregar
+									</form:button>
+								</c:otherwise>
+							</c:choose>
+							<a href="/usuarios" id="btnVolver" class="btn btn-danger"><i
+								class="glyphicon glyphicon-chevron-left"></i> Volver</a>
 						</form:form>
 					</div>
 				</div>
