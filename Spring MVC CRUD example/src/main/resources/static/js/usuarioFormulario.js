@@ -5,12 +5,14 @@ $(document).ready(function() {
 	if(usuario_id != -1) {
 		loadForm(usuario_id);
 		$('input[name="password"]', $(this)).attr('disabled', true);
+	} else {
+		//$('.submit-button', $(this)).attr('disabled', true);
 	}
-	$('.submit-button', $(this)).attr('disabled', true);
 
 	$('#btnAgregar').click(function(event) {
 		save();
-		location.href = baseURL + "/usuarios";
+		debugger;
+		//location.href = baseURL + "/usuarios";
 	});
 
 	$('#btnEditar').click(function(event) {
@@ -30,87 +32,87 @@ $(document).ready(function() {
 	    }
 	});
 	
-	$('#formUsuario').bootstrapValidator({
-		submitButtons: 'button[type="submit"]',
-		live : "enabled",
-		message : "Los valores ingresados no son v&aacute;lidos",
-		feedbackIcons : {
-			valid : "glyphicon glyphicon-ok",
-			invalid : "glyphicon glyphicon-remove",
-			validating : "glyphicon glyphicon-refresh"
-		},
-		fields : {
-			nombre : {
-				validators : {
-					notEmpty : {
-						message : "El nombre es requerido"
-					},
-					regexp : {
-						regexp : /^([a-zA-Z]+\s)*[a-zA-Z]+$/,
-						message : "El nombre solo puede tener letras y espacios no consecutivos"
-					}
-				}
-			},
-			apellido : {
-				validators : {
-					notEmpty : {
-						message : "El apellido es requerido"
-					},
-					regexp : {
-						regexp : /^([a-zA-Z]+\s)*[a-zA-Z]+$/,
-						message : "El apellido solo puede tener letras y espacios no consecutivos"
-					}
-				}
-			},
-			email : {
-				validators : {
-					notEmpty : {
-						message : "El email es requerido"
-					},
-					emailAddress : {
-						message : "La entrada no respeta el formato de un email"
-					}
-				}
-			},
-			password : {
-				validators : {
-					notEmpty : {
-						message : "El password es requerido"
-					}
-				}
-			},
-			nuevo : {
-				validators : {
-					identical : {
-						field : "confirmar",
-						message : "El nuevo password y su confirmaci&oacute;n deben coincidir"
-					}
-				}
-			},
-			confirmar : {
-				validators : {
-					identical : {
-						field : "nuevo",
-						message : "El nuevo password y su confirmaci&oacute;n deben coincidir"
-					}
-				}
-			}
-		}
-	});
-
-	$('#formUsuario').on('status.field.bv', function(e, data) {
-        formIsValid = true;
-        $('.form-group', $(this)).each( function() {
-            formIsValid = formIsValid && $(this).hasClass('has-success');
-        });
-        
-        if(formIsValid) {
-            $('.submit-button', $(this)).attr('disabled', false);
-        } else {
-            $('.submit-button', $(this)).attr('disabled', true);
-        }
-    });
-	
+//	$('#formUsuario').bootstrapValidator({
+//		submitButtons: 'button[type="submit"]',
+//		live : "enabled",
+//		message : "Los valores ingresados no son v&aacute;lidos",
+//		feedbackIcons : {
+//			valid : "glyphicon glyphicon-ok",
+//			invalid : "glyphicon glyphicon-remove",
+//			validating : "glyphicon glyphicon-refresh"
+//		},
+//		fields : {
+//			nombre : {
+//				validators : {
+//					notEmpty : {
+//						message : "El nombre es requerido"
+//					},
+//					regexp : {
+//						regexp : /^([a-zA-Z]+\s)*[a-zA-Z]+$/,
+//						message : "El nombre solo puede tener letras y espacios no consecutivos"
+//					}
+//				}
+//			},
+//			apellido : {
+//				validators : {
+//					notEmpty : {
+//						message : "El apellido es requerido"
+//					},
+//					regexp : {
+//						regexp : /^([a-zA-Z]+\s)*[a-zA-Z]+$/,
+//						message : "El apellido solo puede tener letras y espacios no consecutivos"
+//					}
+//				}
+//			},
+//			email : {
+//				validators : {
+//					notEmpty : {
+//						message : "El email es requerido"
+//					},
+//					emailAddress : {
+//						message : "La entrada no respeta el formato de un email"
+//					}
+//				}
+//			},
+//			password : {
+//				validators : {
+//					notEmpty : {
+//						message : "El password es requerido"
+//					}
+//				}
+//			},
+//			nuevo : {
+//				validators : {
+//					identical : {
+//						field : "confirmar",
+//						message : "El nuevo password y su confirmaci&oacute;n deben coincidir"
+//					}
+//				}
+//			},
+//			confirmar : {
+//				validators : {
+//					identical : {
+//						field : "nuevo",
+//						message : "El nuevo password y su confirmaci&oacute;n deben coincidir"
+//					}
+//				}
+//			}
+//		}
+//	});
+//
+//	$('#formUsuario').on('status.field.bv', function(e, data) {
+//        formIsValid = true;
+//        $('.form-group', $(this)).each( function() {
+//            formIsValid = formIsValid && $(this).hasClass('has-success');
+//        });
+//        
+//        if(formIsValid) {
+//            $('.submit-button', $(this)).attr('disabled', false);
+//        } else {
+//            $('.submit-button', $(this)).attr('disabled', true);
+//        }
+//    });
+//	
 });
 
 function loadCheckboxes() {
@@ -202,11 +204,12 @@ function save() {
 		success : function(result){
 			console.log("Usuario agregado");
 		},
-		error : function(event){
-			alert("Error al agregar usuario");
-			console.log("Error al agregar usuario: ", event);
+		error : function(result) {
+			alert("Error al agregar usuario: ", result.responseText);
+			console.log("Error al agregar usuario: ", result.responseText);
 		}
 	});
+	
 }
 
 function update() {
@@ -237,9 +240,9 @@ function update() {
 		success : function(result){
 			console.log("Usuario actualizado");
 		},
-		error : function(event){
-			alert("Error al actualizar usuario");
-			console.log("Error al actualizar usuario: ", event);
+		error : function(result){
+			alert("Error al actualizar usuario: ", result.responseText);
+			console.log("Error al actualizar usuario: ", result.responseText);
 		}
 	});
 }

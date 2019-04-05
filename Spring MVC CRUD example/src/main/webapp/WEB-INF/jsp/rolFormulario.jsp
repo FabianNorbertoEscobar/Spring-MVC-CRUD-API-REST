@@ -59,6 +59,7 @@
 								<div class="col-md-9">
 									<form:input path="nombre" name="nombre" placeholder="Ingrese nombre"
 										class="form-control" required="required" />
+									<form:errors path="nombre" class="has-error"></form:errors>
 								</div>
 							</div>
 							<br />
@@ -70,6 +71,7 @@
 									<form:input path="descripcion" name="descripcion"
 										placeholder="Ingrese descripcion" class="form-control"
 										required="required" />
+									<form:errors path="descripcion" class="has-error"></form:errors>
 								</div>
 							</div>
 							<br />
@@ -79,6 +81,7 @@
 								<div class="col-md-9">
 									<form:input type="date" path="fechaCreacion" name="fechaCreacion"
 										class="date form-control" required="required" />
+									<form:errors path="fechaCreacion" class="has-error"></form:errors>
 								</div>
 							</div>
 							<br />
@@ -90,6 +93,7 @@
 									Activo
 									<form:radiobutton path="estado" name="estado" value="false" />
 									Inactivo
+									<form:errors path="estado" class="has-error"></form:errors>
 								</div>
 							</div>
 							<br />

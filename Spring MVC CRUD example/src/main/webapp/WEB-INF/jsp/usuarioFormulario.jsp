@@ -60,6 +60,7 @@
 								<div class="col-md-9">
 									<form:input path="nombre" name="nombre" placeholder="Ingrese nombre"
 										class="form-control" required="required" />
+									<form:errors path="nombre" class="has-error"></form:errors>
 								</div>
 							</div>
 							<br />
@@ -70,6 +71,7 @@
 								<div class="col-md-9">
 									<form:input path="apellido" name="apellido" placeholder="Ingrese apellido"
 										class="form-control" required="required" />
+									<form:errors path="apellido" class="has-error"></form:errors>
 								</div>
 							</div>
 							<br />
@@ -80,6 +82,7 @@
 									<form:input type="email" path="email" name="email"
 										placeholder="Ingrese e-mail" class="form-control"
 										required="required" />
+									<form:errors path="email" class="has-error"></form:errors>
 								</div>
 							</div>
 							<br />
@@ -89,6 +92,7 @@
 								<div class="col-md-9">
 									<form:password path="password" name="password" placeholder="Ingrese password"
 										class="form-control" required="required" />
+									<form:errors path="password" class="has-error"></form:errors>
 								</div>
 							</div>
 							<br />
