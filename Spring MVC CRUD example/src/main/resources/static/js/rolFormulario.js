@@ -2,83 +2,75 @@ $(document).ready(function() {
 	
 	if(rol_id != -1) {
 		loadForm(rol_id);
-	} else {
-		//$('.submit-button', $(this)).attr('disabled', true);
 	}
 	
-	$('#btnAgregar').click(function(event) {
-		save();
-		debugger;
-		//location.href = baseURL + "/roles";
+	$('#formRol').bootstrapValidator({
+		submitButtons: 'button[type="submit"]',
+		live : "enabled",
+		message : "Los valores ingresados no son v&aacute;lidos",
+		feedbackIcons : {
+			valid : "glyphicon glyphicon-ok",
+			invalid : "glyphicon glyphicon-remove",
+			validating : "glyphicon glyphicon-refresh"
+		},
+		fields : {
+			nombre : {
+				validators : {
+					notEmpty : {
+						message : "El nombre es requerido"
+					},
+					regexp : {
+						regexp : /^([a-zA-Z]+\s)*[a-zA-Z]+$/,
+						message : "El nombre solo puede tener letras y espacios no consecutivos"
+					}
+				}
+			},
+			descripcion : {
+				validators : {
+					notEmpty : {
+						message : "La descripci&oacute;n es requerida"
+					},
+					regexp : {
+						regexp : /^([a-zA-Z]+\s)*[a-zA-Z]+$/,
+						message : "La descripci&oacute;n solo puede tener letras y espacios no consecutivos"
+					}
+				}
+			},
+			fechaCreacion : {
+				validators : {
+					notEmpty : {
+						message : "La fecha de creaci&oacute;n es requerida"
+					}
+				}
+			},
+			estado : {
+				validators : {
+					notEmpty : {
+						message : "El estado es requerido"
+					}
+				}
+			}
+		}
 	});
 
-	$('#btnEditar').click(function(event) {
-		update();
-		location.href = baseURL + "/roles";
+	$("#formRol").submit(function(ev){
+		ev.preventDefault();
 	});
-//	
-//	$('#formRol').bootstrapValidator({
-//		submitButtons: 'button[type="submit"]',
-//		live : "enabled",
-//		message : "Los valores ingresados no son v&aacute;lidos",
-//		feedbackIcons : {
-//			valid : "glyphicon glyphicon-ok",
-//			invalid : "glyphicon glyphicon-remove",
-//			validating : "glyphicon glyphicon-refresh"
-//		},
-//		fields : {
-//			nombre : {
-//				validators : {
-//					notEmpty : {
-//						message : "El nombre es requerido"
-//					},
-//					regexp : {
-//						regexp : /^([a-zA-Z]+\s)*[a-zA-Z]+$/,
-//						message : "El nombre solo puede tener letras y espacios no consecutivos"
-//					}
-//				}
-//			},
-//			descripcion : {
-//				validators : {
-//					notEmpty : {
-//						message : "La descripci&oacute;n es requerida"
-//					},
-//					regexp : {
-//						regexp : /^([a-zA-Z]+\s)*[a-zA-Z]+$/,
-//						message : "La descripci&oacute;n solo puede tener letras y espacios no consecutivos"
-//					}
-//				}
-//			},
-//			fechaCreacion : {
-//				validators : {
-//					notEmpty : {
-//						message : "La fecha de creaci&oacute;n es requerida"
-//					}
-//				}
-//			},
-//			estado : {
-//				validators : {
-//					notEmpty : {
-//						message : "El estado es requerido"
-//					}
-//				}
-//			}
-//		}
-//	});
-//	
-//	$('#formRol').on('status.field.bv', function(e, data) {
-//        formIsValid = true;
-//        $('.form-group', $(this)).each( function() {
-//            formIsValid = formIsValid && $(this).hasClass('has-success');
-//        });
-//        
-//        if(formIsValid) {
-//            $('.submit-button', $(this)).attr('disabled', false);
-//        } else {
-//            $('.submit-button', $(this)).attr('disabled', true);
-//        }
-//    });
-//	
+	$(".submit-button").on("click", function(){
+	   var bootstrapValidator = $("#formRol").data('bootstrapValidator');
+	   bootstrapValidator.validate();
+	   if(bootstrapValidator.isValid()){
+		   if (rol_id != -1) {
+			   update();
+		   } else {
+			   save();
+		   }
+		   $("#formRol").submit();
+		   //location.href = baseURL + "/roles";
+	   }
+	   else return;
+	});
+	
 });
 
 function loadForm(idEdit) {
@@ -114,7 +106,7 @@ function loadForm(idEdit) {
 		},
 		error : function(event) {
 			alert("Error al cargar el rol a editar");
-			console.log("Error al cargar el rol a editar: ", event);
+			console.log("Error al cargar el rol a editar");
 		}
 	});
 	
@@ -146,10 +138,10 @@ function save() {
 		success : function(result){
 			console.log("Rol agregado");
 		},
-		error : function(result){
-			alert("Error al agregar rol: ", result.responseText);
-			console.log("Error al agregar rol: ", result.responseText);
-		}
+		error:function(xhr, status, errorThrown){
+	        alert("ERROR AL AGREGAR ROL:\n" + xhr.responseText);
+	        console.log("ERROR AL AGREGAR ROL:\n" + xhr.responseText);
+	    }
 	});
 }
 
@@ -180,9 +172,9 @@ function update() {
 		success : function(result){
 			console.log("Rol actualizado");
 		},
-		error : function(result){
-			alert("Error al actualizar rol: ", result.responseText);
-			console.log("Error al actualizar rol: ", resultResponseText);
-		}
+		error:function(xhr, status, errorThrown){
+	        alert("ERROR AL ACTUALIZAR ROL:\n" + xhr.responseText);
+	        console.log("ERROR AL ACTUALIZAR ROL:\n" + xhr.responseText);
+	    }
 	});
 }

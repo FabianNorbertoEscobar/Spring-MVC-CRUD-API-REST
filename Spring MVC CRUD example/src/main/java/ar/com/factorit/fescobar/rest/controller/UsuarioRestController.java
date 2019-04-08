@@ -5,7 +5,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
@@ -68,7 +67,7 @@ public class UsuarioRestController {
 	private String getErrorMessages(Errors errors) {
 		StringBuilder errores = new StringBuilder();
 		for (ObjectError error : errors.getAllErrors()) {
-			errores.append(error.getDefaultMessage() + ". ");
+			errores.append(error.getDefaultMessage() + ".\n");
 		}
 		return errores.toString();
 	}
