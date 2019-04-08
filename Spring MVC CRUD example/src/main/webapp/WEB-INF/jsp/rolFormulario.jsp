@@ -38,19 +38,18 @@
 			<div class="col-md-offset-2 col-md-7">
 				<c:choose>
 					<c:when test="${rol.id != -1 }">
-						<h1 class="text-center">Editar rol</h1>
+						<c:set var="modo" value="Editar" />
 					</c:when>
 					<c:otherwise>
-						<h1 class="text-center">Agregar rol</h1>
+						<c:set var="modo" value="Agregar" />
 					</c:otherwise>
 				</c:choose>
+				<h1 class="text-center">${modo } rol</h1>
 				<br /> <br />
-
 				<div class="panel panel-info">
 					<div class="panel-heading">
 						<div class="panel-title">Formulario</div>
 					</div>
-
 					<div class="panel-body">
 						<form:form action="${baseURL }/roles" id="formRol" modelAttribute="rol">
 							<form:hidden path="id" />
@@ -99,22 +98,12 @@
 							<br />
 							<br />
 							<br />
-							<c:choose>
-								<c:when test="${rol.id != -1 }">
-									<form:button type="submit" id="btnEditar" class="btn btn-success submit-button">
-										<i class="glyphicon glyphicon-check"></i> Editar
+							<form:button type="submit" id="btnSubmit" class="btn btn-success submit-button">
+										<i class="glyphicon glyphicon-check"></i> ${modo }
 									</form:button>
-								</c:when>
-								<c:otherwise>
-									<form:button type="submit" id="btnAgregar" class="btn btn-success submit-button">
-										<i class="glyphicon glyphicon-check"></i> Agregar
-									</form:button>
-								</c:otherwise>
-							</c:choose>
 							<a href="/roles" id="btnVolver" class="btn btn-danger"><i
 								class="glyphicon glyphicon-chevron-left"></i> Volver</a>
 						</form:form>
-
 					</div>
 				</div>
 			</div>
