@@ -65,8 +65,7 @@ $(document).ready(function() {
 		   } else {
 			   save();
 		   }
-		   $("#formRol").submit();
-		   //location.href = baseURL + "/roles";
+		   location.href = baseURL + "/roles";
 	   }
 	   else return;
 	});

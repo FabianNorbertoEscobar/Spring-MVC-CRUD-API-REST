@@ -1,6 +1,7 @@
 package ar.com.factorit.fescobar.facade;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -51,6 +52,7 @@ public class UsuarioFacade {
 		usuario.setApellido(usuarioDTO.getApellido());
 		usuario.setEmail(usuarioDTO.getEmail());
 		usuario.setPassword(usuarioDTO.getPassword());
+		usuario.setRoles(new HashSet<Rol>());
 		for (RolDTO rolDTO : usuarioDTO.getRoles()) {
 			Rol rol = rolService.findOne(rolDTO.getId());
 			usuario.getRoles().add(rol);

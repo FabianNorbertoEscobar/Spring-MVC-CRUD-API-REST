@@ -94,13 +94,12 @@ $(document).ready(function() {
 	   var bootstrapValidator = $("#formUsuario").data('bootstrapValidator');
 	   bootstrapValidator.validate();
 	   if(bootstrapValidator.isValid()){
-		   if (rol_id != -1) {
+		   if (usuario_id != -1) {
 			   update();
 		   } else {
 			   save();
 		   }
-		   $("#formUsuario").submit();
-		   //location.href = baseURL + "/usuarios";
+		   location.href = baseURL + "/usuarios";
 	   }
 	   else return;
 	});
