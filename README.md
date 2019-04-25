@@ -10,12 +10,24 @@ Usando:
 - JSTL
 - JPA
 - Hibernate
+- H2
+- MySQL
 - XML
 - Maven
 - Tomcat
 - HTML
 - CSS
 - Bootstrap
+- API REST
+- Javascript
+- Json
+- Jackson
+- JQuery
+- Ajax
+- Bootstrap Validator
+- Bean
 - MVC
 - DAO
-- API REST
+- DTO
+- Singleton
+- Facade
